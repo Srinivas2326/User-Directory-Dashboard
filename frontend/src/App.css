@@ -1,0 +1,33 @@
+body {
+  font-family: Arial;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+th {
+  background: #f4f4f4;
+}
+
+tr:hover {
+  background: #f9f9f9;
+}
+
+.search {
+  padding: 8px;
+  width: 300px;
+  margin-right: 10px;
+}
+
+.sort {
+  margin: 10px 0;
+}
