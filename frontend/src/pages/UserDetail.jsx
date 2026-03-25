@@ -14,48 +14,88 @@ const UserDetail = () => {
     });
   }, [id]);
 
-  if (!user) return <h2>Loading user...</h2>;
+  if (!user) return <h2>Loading...</h2>;
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="details-container">
       
       <button 
+        className="back-btn"
         onClick={() => navigate("/")}
-        style={{
-          padding: "8px 12px",
-          marginBottom: "20px",
-          cursor: "pointer"
-        }}
       >
         ← Back to Dashboard
       </button>
 
-      <h2>{user.name}</h2>
+      {/* HEADER */}
+      <div className="user-header">
+        <div className="avatar">👤</div>
+        <div>
+          <h2>{user.name}</h2>
+          <div className="username">@{user.username}</div>
+        </div>
+      </div>
 
-      <p><b>Username:</b> {user.username}</p>
-      <p><b>Email:</b> {user.email}</p>
-      <p><b>Phone:</b> {user.phone}</p>
-      <p>
-        <b>Website:</b>{" "}
-        <a href={`https://${user.website}`} target="_blank">
-          {user.website}
-        </a>
-      </p>
+      <div className="grid">
 
-      <h3>Address</h3>
-      <p><b>Street:</b> {user.address.street}</p>
-      <p><b>Suite:</b> {user.address.suite}</p>
-      <p><b>City:</b> {user.address.city}</p>
-      <p><b>Zipcode:</b> {user.address.zipcode}</p>
+        {/* CONTACT */}
+        <div className="card">
+          <h3>Contact Information</h3>
 
-      <h4>Geo Location</h4>
-      <p><b>Lat:</b> {user.address.geo.lat}</p>
-      <p><b>Lng:</b> {user.address.geo.lng}</p>
+          <div className="info-row">
+            <div className="label">Email</div>
+            <div className="value">{user.email}</div>
+          </div>
 
-      <h3>Company</h3>
-      <p><b>Name:</b> {user.company.name}</p>
-      <p><b>Catch Phrase:</b> {user.company.catchPhrase}</p>
-      <p><b>BS:</b> {user.company.bs}</p>
+          <div className="info-row">
+            <div className="label">Phone</div>
+            <div className="value">{user.phone}</div>
+          </div>
+
+          <div className="info-row">
+            <div className="label">Website</div>
+            <div className="value">
+              <a href={`https://${user.website}`} target="_blank">
+                {user.website}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* ADDRESS */}
+        <div className="card">
+          <h3>Address</h3>
+
+          <div className="value">
+            {user.address.street}<br/>
+            {user.address.suite}<br/>
+            {user.address.city}, {user.address.zipcode}
+          </div>
+
+          <br/>
+
+          <div className="label">Coordinates</div>
+          <div className="value">
+            Lat: {user.address.geo.lat}, 
+            Lng: {user.address.geo.lng}
+          </div>
+        </div>
+
+      </div>
+
+      {/* COMPANY */}
+      <div className="card company-card">
+        <h3>Company Information</h3>
+
+        <h4>{user.company.name}</h4>
+
+        <p>"{user.company.catchPhrase}"</p>
+
+        <div className="card">
+          <div className="label">Business</div>
+          <div className="value">{user.company.bs}</div>
+        </div>
+
+      </div>
 
     </div>
   );
